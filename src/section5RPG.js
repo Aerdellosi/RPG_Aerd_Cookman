@@ -12,25 +12,29 @@ export class Character{
 }
 
 export class Items{
-  constructor(item1, item2, item3, item4, item5, item6, item7, item8, item9, item10, item11, item12, item13, item14, item15, item16, item17, item18) {
-    this.item1 = item1;
-    this.item2 = item2;
-    this.item3 = item3;
-    this.item4 = item4;
-    this.item5 = item5;
-    this.item6 = item6;
-    this.item7 = item7;
-    this.item8 = item8;
-    this.item9 = item9;
-    this.item10 = item10;
-    this.item11 = item11;
-    this.item12 = item12;
-    this.item13 = item13;
-    this.item14 = item14;
-    this.item15 = item15;
-    this.item16 = item16;
-    this.item17 = item17;
-    this.item18 = item18;
+  constructor() {
+    
+    // constructor(item1, item2, item3, item4, item5, item6, item7, item8, item9, item10, item11, item12, item13, item14, item15, item16, item17, item18) {
+    //   Object.assign(this, {item1, item2, item3, item4, item5, item6, item7, item8, item9, item10, item11, item12, item13, item14, item15, item16, item17, item18})
+      
+    // this.item1 = item1;
+    // this.item2 = item2;
+    // this.item3 = item3;
+    // this.item4 = item4;
+    // this.item5 = item5;
+    // this.item6 = item6;
+    // this.item7 = item7;
+    // this.item8 = item8;
+    // this.item9 = item9;
+    // this.item10 = item10;
+    // this.item11 = item11;
+    // this.item12 = item12;
+    // this.item13 = item13;
+    // this.item14 = item14;
+    // this.item15 = item15;
+    // this.item16 = item16;
+    // this.item17 = item17;
+    // this.item18 = item18;
   }
 }
 
@@ -46,5 +50,59 @@ export class ItemObj{
     this.damage = damage;
     this.range = range;
     this.special = null;
+  }
+}
+
+export class FireLizard{
+  constructor(name, hp, atkDMG, atkChance) {
+    this.name = name;
+    this.hp = hp;
+    this.atkDMG = atkDMG;
+    this.atkChance = atkChance;
+  }
+}
+
+export class RockMonster{
+  constructor(name, hp, atkDMG, atkChance) {
+    this.name = name;
+    this.hp = hp;
+    this.atkDMG = atkDMG;
+    this.atkChance = atkChance;
+  }
+}
+
+export class Wizard{
+  constructor(name, hp, atkDMG, atkChance) {
+    this.name = name;
+    this.hp = hp;
+    this.atkDMG = atkDMG;
+    this.atkChance = atkChance;
+  }
+}
+
+export class Skeleton{
+  constructor(name, hp, atkDMG, atkChance) {
+    this.name = name;
+    this.hp = hp;
+    this.atkDMG = atkDMG;
+    this.atkChance = atkChance;
+  }
+}
+
+export class Wolves{
+  constructor(name, hp, atkDMG, atkChance) {
+    this.name = name;
+    this.hp = hp;
+    this.atkDMG = atkDMG;
+    this.atkChance = atkChance;
+  }
+}
+
+export class Pirate{
+  constructor(name, hp, atkDMG, atkChance) {
+    this.name = name;
+    this.hp = hp;
+    this.atkDMG = atkDMG;
+    this.atkChance = atkChance;
   }
 }
