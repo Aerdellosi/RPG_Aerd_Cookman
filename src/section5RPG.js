@@ -60,14 +60,6 @@ export class Items{
   }
 }
 
-export class CharClass{
-  constructor(charClass) {
-    this.name = charClass;
-    if(charClass === "opium smuggler"){
-      
-    }
-  }
-}
 
 export class ItemObj{
   constructor(name, damage, range) {
@@ -78,86 +70,127 @@ export class ItemObj{
   }
 }
 
-export class FireLizard{
-  constructor(name, hp, atkDMG, atkChance) {
-    this.name = name;
-    this.hp = hp;
-    this.atkDMG = atkDMG;
-    this.atkChance = atkChance;
+// export class Enemy{
+//   constructor(move, range, initi, dex, dmg, hp) {
+//     this.move = move;
+//     this.range = range;
+//     this.initiationDistance = initi;
+//     this.dex = dex;
+//     this.dmg = dmg;
+//     this.hp = hp;
+//   }
+// }
+
+
+class CombatMethods{
+  constructor () {
+  }
+  enemyAttackCheck() {
+    let combatDistance = this.initiationDistance;
+    if (this.range >= combatDistance) {
+      enemyAttack();
+    } else {
+      combatDistance = combatDistance - this.move;
+    }
+    return combatDistance;
+  }
+  enemyAttack() {
+    console.log("hiya");
   }
 }
 
-export class RockMonster{
-  constructor(name, hp, atkDMG, atkChance) {
-    this.name = name;
+export class Enemy extends CombatMethods{
+  constructor(move, range, initi, dex, dmg, hp, enemyAttackCheck, enemyAttack) {
+    super(enemyAttackCheck, enemyAttack);
+    this.move = move;
+    this.range = range;
+    this.initiationDistance = initi;
+    this.dex = dex;
+    this.dmg = dmg;
     this.hp = hp;
-    this.atkDMG = atkDMG;
-    this.atkChance = atkChance;
   }
-}
 
-export class Wizard{
-  constructor(name, hp, atkDMG, atkChance) {
-    this.name = name;
-    this.hp = hp;
-    this.atkDMG = atkDMG;
-    this.atkChance = atkChance;
-  }
 }
+// export class FireLizard{
+//   constructor(name, hp, atkDMG, atkChance) {
+//     this.name = name;
+//     this.hp = hp;
+//     this.atkDMG = atkDMG;
+//     this.atkChance = atkChance;
+//   }
+// }
 
-export class Skeleton{
-  constructor(name, hp, atkDMG, atkChance) {
-    this.name = name;
-    this.hp = hp;
-    this.atkDMG = atkDMG;
-    this.atkChance = atkChance;
-  }
-}
+// export class RockMonster{
+//   constructor(name, hp, atkDMG, atkChance) {
+//     this.name = name;
+//     this.hp = hp;
+//     this.atkDMG = atkDMG;
+//     this.atkChance = atkChance;
+//   }
+// }
 
-export class Wolves{
-  constructor(name, hp, atkDMG, atkChance) {
-    this.name = name;
-    this.hp = hp;
-    this.atkDMG = atkDMG;
-    this.atkChance = atkChance;
-  }
-}
+// export class Wizard{
+//   constructor(name, hp, atkDMG, atkChance) {
+//     this.name = name;
+//     this.hp = hp;
+//     this.atkDMG = atkDMG;
+//     this.atkChance = atkChance;
+//   }
+// }
 
-export class Pirate{
-  constructor(name, hp, atkDMG, atkChance) {
-    this.name = name;
-    this.hp = hp;
-    this.atkDMG = atkDMG;
-    this.atkChance = atkChance;
-  }
-}
+// export class Skeleton{
+//   constructor(name, hp, atkDMG, atkChance) {
+//     this.name = name;
+//     this.hp = hp;
+//     this.atkDMG = atkDMG;
+//     this.atkChance = atkChance;
+//   }
+// }
 
-export class Bats{
-  constructor(name, hp, atkDMG, atkChance) {
-    this.name = name;
-    this.hp = hp;
-    this.atkDMG = atkDMG;
-    this.atkChance = atkChance;
-  }
-}
+// export class Wolves{
+//   constructor(name, hp, atkDMG, atkChance) {
+//     this.name = name;
+//     this.hp = hp;
+//     this.atkDMG = atkDMG;
+//     this.atkChance = atkChance;
+//   }
+// }
 
-export class ShadowDemon{
-  constructor(name, hp, atkDMG, atkChance) {
-    this.name = name;
-    this.hp = hp;
-    this.atkDMG = atkDMG;
-    this.atkChance = atkChance;
-  }
-}
+// export class Pirate{
+//   constructor(name, hp, atkDMG, atkChance) {
+//     this.name = name;
+//     this.hp = hp;
+//     this.atkDMG = atkDMG;
+//     this.atkChance = atkChance;
+//   }
+// }
 
-export class SpiderSnake{
-  constructor(name, hp, atkDMG, atkChance) {
-    this.name = name;
-    this.hp = hp;
-    this.atkDMG = atkDMG;
-    this.atkChance = atkChance;
-  }
-}
+// export class Bats{
+//   constructor(name, hp, atkDMG, atkChance) {
+//     this.name = name;
+//     this.hp = hp;
+//     this.atkDMG = atkDMG;
+//     this.atkChance = atkChance;
+//   }
+// }
+
+// export class ShadowDemon{
+//   constructor(name, hp, atkDMG, atkChance) {
+//     this.name = name;
+//     this.hp = hp;
+//     this.atkDMG = atkDMG;
+//     this.atkChance = atkChance;
+//   }
+// }
+
+// export class SpiderSnake{
+//   constructor(name, hp, atkDMG, atkChance) {
+//     this.name = name;
+//     this.hp = hp;
+//     this.atkDMG = atkDMG;
+//     this.atkChance = atkChance;
+//   }
+// }
 
 // export let LvlUp = function(strength, dexterity, intelegence, charisma, constitution){
 //     new Character("something", [])

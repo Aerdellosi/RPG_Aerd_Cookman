@@ -1,5 +1,5 @@
-import {Character, Items, CharClass, ItemObj, FireLizard, RockMonster, Wizard, Skeleton, Wolves, Pirate, Bats, ShadowDemon, SpiderSnake} from './../src/section5RPG.js';
-
+import {Character, Items, CharClass, ItemObj, Enemy} from './../src/section5RPG.js';
+// FireLizard, RockMonster, Wizard, Skeleton, Wolves, Pirate, Bats, ShadowDemon, SpiderSnake
 describe('Character', () => {
 
   test('should correctly create a character object with 8 key values', () => {
@@ -68,9 +68,9 @@ describe('CharClass', () => {
   let spiceTrader = "spice trader";
   let missionary = "missionary";
 
-  const charClass = new CharClass(opiumSmuggler);
+  const billybob = new Character(opiumSmuggler, null);
   test("should see if character class object is being created properly", () => {
-    expect(charClass.name).toEqual("opium smuggler");
+    expect(billybob.charClass).toEqual("opium smuggler");
   });
 });
 
@@ -119,109 +119,11 @@ describe("Items", () => {
   });
 });
 
-describe('FireLizard', () => {
-
-  test('should correctly create a fire lizard object with stats as key values', () => {
-    const lizard = new FireLizard("Fire Lizard", 10, 3, 40);
-    expect(lizard.name).toEqual("Fire Lizard");
-    expect(lizard.hp).toEqual(10);
-    expect(lizard.atkDMG).toEqual(3);
-    expect(lizard.atkChance).toEqual(40);
-  });
-});
-
-describe('RockMonster', () => {
-
-  test('should correctly create a Rock Monster object with stats as key values', () => {
-    const rock = new RockMonster("Rock Monster", 25, 4, 10);
-    expect(rock.name).toEqual("Rock Monster");
-    expect(rock.hp).toEqual(25);
-    expect(rock.atkDMG).toEqual(4);
-    expect(rock.atkChance).toEqual(10);
-  });
-});
-
-describe('Wizard', () => {
-
-  test('should correctly create a Wizard object with stats as key values', () => {
-    const wiz = new Wizard("Wizard", 12, 3, 40);
-    expect(wiz.name).toEqual("Wizard");
-    expect(wiz.hp).toEqual(12);
-    expect(wiz.atkDMG).toEqual(3);
-    expect(wiz.atkChance).toEqual(40);
-  });
-});
-
-describe('Skeleton', () => {
-
-  test('should correctly create a Wizard object with stats as key values', () => {
-    const skeleton = new Skeleton("Skeleton", 12, 3, 40);
-    expect(skeleton.name).toEqual("Skeleton");
-    expect(skeleton.hp).toEqual(12);
-    expect(skeleton.atkDMG).toEqual(3);
-    expect(skeleton.atkChance).toEqual(40);
-  });
-});
-
-describe('Wolves', () => {
-
-  test('should correctly create a wolves object with stats as key values', () => {
-    const wolves = new Wolves("Wolves", 12, 3, 40);
-    expect(wolves.name).toEqual("Wolves");
-    expect(wolves.hp).toEqual(12);
-    expect(wolves.atkDMG).toEqual(3);
-    expect(wolves.atkChance).toEqual(40);
-  });
-});
-
-describe('Pirate', () => {
-
-  test('should correctly create a pirate object with stats as key values', () => {
-    const pirate = new Pirate("Pirate", 12, 3, 40);
-    expect(pirate.name).toEqual("Pirate");
-    expect(pirate.hp).toEqual(12);
-    expect(pirate.atkDMG).toEqual(3);
-    expect(pirate.atkChance).toEqual(40);
-  });
-});
-
-describe('Bats', () => {
-
-  test('should correctly create a pirate object with stats as key values', () => {
-    const bats = new Bats("Bats", 12, 3, 40);
-    expect(bats.name).toEqual("Bats");
-    expect(bats.hp).toEqual(12);
-    expect(bats.atkDMG).toEqual(3);
-    expect(bats.atkChance).toEqual(40);
-  });
-});
-
-describe('ShadowDemon', () => {
-
-  test('should correctly create a pirate object with stats as key values', () => {
-    const shadow = new ShadowDemon("ShadowDemon", 12, 3, 40);
-    expect(shadow.name).toEqual("ShadowDemon");
-    expect(shadow.hp).toEqual(12);
-    expect(shadow.atkDMG).toEqual(3);
-    expect(shadow.atkChance).toEqual(40);
-  });
-});
-
-describe('SpiderSnake', () => {
-
-  test('should correctly create a pirate object with stats as key values', () => {
-    const spidersnake = new SpiderSnake("SpiderSnake", 12, 3, 40);
-    expect(spidersnake.name).toEqual("SpiderSnake");
-    expect(spidersnake.hp).toEqual(12);
-    expect(spidersnake.atkDMG).toEqual(3);
-    expect(spidersnake.atkChance).toEqual(40);
-  });
-});
 
 describe("Character class", () => {
 
   test("should correctly update stats when class is assigned", () => {
-    let characterBoi = new Character("missionary")
+    let characterBoi = new Character("missionary");
     expect(characterBoi.charClass).toEqual("missionary");
     characterBoi.charClassApplyStats();
     expect(characterBoi.cha).toEqual(10);
@@ -232,9 +134,7 @@ describe("Character class", () => {
 describe("LvlUp", () => {
   let garthVanLohen = new Character("spice trader", null);
   garthVanLohen.charClassApplyStats();
-  console.log(garthVanLohen);
   garthVanLohen.LvlUp(5,0,0,5,0);
-  console.log(garthVanLohen);
   test("should correctly update stats at level up point", () => {
     expect(garthVanLohen.str).toEqual(10);
     expect(garthVanLohen.dex).toEqual(10);
@@ -242,7 +142,6 @@ describe("LvlUp", () => {
     expect(garthVanLohen.cha).toEqual(15);
     expect(garthVanLohen.con).toEqual(5);
   });
-
 });
 
 describe("add dummy item list", () => {
@@ -253,3 +152,148 @@ describe("add dummy item list", () => {
   });
 });
 
+describe("Enemy", () => {
+
+  test("should make enemy with set values", () => {
+    let enemy = new Enemy(70, 10, 300, 10, 4, 35);
+    expect(enemy.move).toEqual(70);
+    expect(enemy.range).toEqual(10);
+    expect(enemy.initiationDistance).toEqual(300);
+    expect(enemy.dex).toEqual(10);
+    expect(enemy.dmg).toEqual(4);
+    expect(enemy.hp).toEqual(35);
+  });
+});
+
+describe("Enemy", () => {
+
+  test("should make enemy with set values", () => {
+    let enemy = new Enemy(70, 10, 300, 10, 4, 35);
+    expect(enemy.move).toEqual(70);
+    expect(enemy.range).toEqual(10);
+    expect(enemy.initiationDistance).toEqual(300);
+    expect(enemy.dex).toEqual(10);
+    expect(enemy.dmg).toEqual(4);
+    expect(enemy.hp).toEqual(35);
+  });
+
+  test("should make a variable equal to initiation distance", () => {
+    let enemy = new Enemy(70, 10, 300, 10, 4, 35);
+    let distanceVariable = enemy.initiationDistance;
+    let playerMove = 40;
+    distanceVariable = distanceVariable - playerMove;
+    expect(distanceVariable).toEqual(260);
+
+  });
+  
+  test("this should update distance between enemy and player after enemy move", () => {
+    
+    let enemy = new Enemy(70, 10, 300, 10, 4, 35);
+    let attackCheck = enemy.enemyAttackCheck();
+    console.log(attackCheck);
+    expect(attackCheck).toEqual(230);
+
+
+  });
+
+});
+
+
+// describe('FireLizard', () => {
+
+//   test('should correctly create a fire lizard object with stats as key values', () => {
+//     const lizard = new FireLizard("Fire Lizard", 10, 3, 40);
+//     expect(lizard.name).toEqual("Fire Lizard");
+//     expect(lizard.hp).toEqual(10);
+//     expect(lizard.atkDMG).toEqual(3);
+//     expect(lizard.atkChance).toEqual(40);
+//   });
+// });
+
+// describe('RockMonster', () => {
+
+//   test('should correctly create a Rock Monster object with stats as key values', () => {
+//     const rock = new RockMonster("Rock Monster", 25, 4, 10);
+//     expect(rock.name).toEqual("Rock Monster");
+//     expect(rock.hp).toEqual(25);
+//     expect(rock.atkDMG).toEqual(4);
+//     expect(rock.atkChance).toEqual(10);
+//   });
+// });
+
+// describe('Wizard', () => {
+
+//   test('should correctly create a Wizard object with stats as key values', () => {
+//     const wiz = new Wizard("Wizard", 12, 3, 40);
+//     expect(wiz.name).toEqual("Wizard");
+//     expect(wiz.hp).toEqual(12);
+//     expect(wiz.atkDMG).toEqual(3);
+//     expect(wiz.atkChance).toEqual(40);
+//   });
+// });
+
+// describe('Skeleton', () => {
+
+//   test('should correctly create a Wizard object with stats as key values', () => {
+//     const skeleton = new Skeleton("Skeleton", 12, 3, 40);
+//     expect(skeleton.name).toEqual("Skeleton");
+//     expect(skeleton.hp).toEqual(12);
+//     expect(skeleton.atkDMG).toEqual(3);
+//     expect(skeleton.atkChance).toEqual(40);
+//   });
+// });
+
+// describe('Wolves', () => {
+
+//   test('should correctly create a wolves object with stats as key values', () => {
+//     const wolves = new Wolves("Wolves", 12, 3, 40);
+//     expect(wolves.name).toEqual("Wolves");
+//     expect(wolves.hp).toEqual(12);
+//     expect(wolves.atkDMG).toEqual(3);
+//     expect(wolves.atkChance).toEqual(40);
+//   });
+// });
+
+// describe('Pirate', () => {
+
+//   test('should correctly create a pirate object with stats as key values', () => {
+//     const pirate = new Pirate("Pirate", 12, 3, 40);
+//     expect(pirate.name).toEqual("Pirate");
+//     expect(pirate.hp).toEqual(12);
+//     expect(pirate.atkDMG).toEqual(3);
+//     expect(pirate.atkChance).toEqual(40);
+//   });
+// });
+
+// describe('Bats', () => {
+
+//   test('should correctly create a pirate object with stats as key values', () => {
+//     const bats = new Bats("Bats", 12, 3, 40);
+//     expect(bats.name).toEqual("Bats");
+//     expect(bats.hp).toEqual(12);
+//     expect(bats.atkDMG).toEqual(3);
+//     expect(bats.atkChance).toEqual(40);
+//   });
+// });
+
+// describe('ShadowDemon', () => {
+
+//   test('should correctly create a pirate object with stats as key values', () => {
+//     const shadow = new ShadowDemon("ShadowDemon", 12, 3, 40);
+//     expect(shadow.name).toEqual("ShadowDemon");
+//     expect(shadow.hp).toEqual(12);
+//     expect(shadow.atkDMG).toEqual(3);
+//     expect(shadow.atkChance).toEqual(40);
+//   });
+// });
+
+// describe('SpiderSnake', () => {
+
+//   test('should correctly create a pirate object with stats as key values', () => {
+//     const spidersnake = new SpiderSnake("SpiderSnake", 12, 3, 40);
+//     expect(spidersnake.name).toEqual("SpiderSnake");
+//     expect(spidersnake.hp).toEqual(12);
+//     expect(spidersnake.atkDMG).toEqual(3);
+//     expect(spidersnake.atkChance).toEqual(40);
+//   });
+// });
