@@ -1,4 +1,4 @@
-import {Character, Items, CharClass, ItemObj, FireLizard, RockMonster, Wizard, Skeleton, Wolves, Pirate, Bats, ShadowDemon, SpiderSnake} from './../src/section5RPG.js';
+import {Character, Items, CharClass, ItemObj, FireLizard, RockMonster, Wizard, Skeleton, Wolves, Pirate, Bats, ShadowDemon, SpiderSnake, LvlUp} from './../src/section5RPG.js';
 
 describe('Character', () => {
 
@@ -219,6 +219,7 @@ describe('SpiderSnake', () => {
 });
 
 describe("Character class", () => {
+
   test("should correctly update stats when class is assigned", () => {
     let characterBoi = new Character("missionary")
     expect(characterBoi.charClass).toEqual("missionary");
@@ -226,5 +227,18 @@ describe("Character class", () => {
     expect(characterBoi.cha).toEqual(10);
   });
   
+});
+
+describe("LvlUp", () => {
+  
+  test("should correctly update stats at level up point", () => {
+    LvlUp(5, 0, 0, 5, 0);
+    expect(str).toEqual(5);
+    expect(dex).toEqual(0);
+    expect(int).toEqual(0);
+    expect(cha).toEqual(5);
+    expect(con).toEqual(0);
+  });
+
 });
 

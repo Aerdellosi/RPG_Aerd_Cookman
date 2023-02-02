@@ -152,4 +152,6 @@ export class SpiderSnake{
   }
 }
 
+export let LvlUp = function(str, dex, int, cha, con){}
+
 //Hello world!
