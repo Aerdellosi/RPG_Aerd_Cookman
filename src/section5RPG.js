@@ -1,14 +1,29 @@
 export class Character{
-  constructor(charClass, str, dex, int, cha, con, inventory, hp) {
+  constructor(charClass, inventory) {
     this.charClass = charClass;
-    this.str = str;
-    this.dex = dex;
-    this.int = int;
-    this.cha = cha;
-    this.con = con;
+    this.str = 5;
+    this.dex = 5;
+    this.int = 5;
+    this.cha = 5;
+    this.con = 5;
     this.inventory = inventory;
-    this.hp = hp;
+    this.hp = this.con * 3;
+    this.lvl = 1;
   }
+  charClassApplyStats() {
+    if (this.charClass === "opium smuggler") {
+      this.str = this.str + 5;
+      this.con = this.con + 5;
+    } else if (this.charClass === "spice trader") {
+      this.dex = this.dex + 5;
+      this.cha = this.cha + 5;
+    } else if (this.charClass === "missionary") {
+      this.cha = this.cha + 5;
+      this.int = this.int + 5;
+    }
+  }
+
+
 }
 
 export class Items{
@@ -41,6 +56,9 @@ export class Items{
 export class CharClass{
   constructor(charClass) {
     this.name = charClass;
+    if(charClass === "opium smuggler"){
+      
+    }
   }
 }
 
@@ -106,3 +124,31 @@ export class Pirate{
     this.atkChance = atkChance;
   }
 }
+
+export class Bats{
+  constructor(name, hp, atkDMG, atkChance) {
+    this.name = name;
+    this.hp = hp;
+    this.atkDMG = atkDMG;
+    this.atkChance = atkChance;
+  }
+}
+
+export class ShadowDemon{
+  constructor(name, hp, atkDMG, atkChance) {
+    this.name = name;
+    this.hp = hp;
+    this.atkDMG = atkDMG;
+    this.atkChance = atkChance;
+  }
+}
+
+export class SpiderSnake{
+  constructor(name, hp, atkDMG, atkChance) {
+    this.name = name;
+    this.hp = hp;
+    this.atkDMG = atkDMG;
+    this.atkChance = atkChance;
+  }
+}
+

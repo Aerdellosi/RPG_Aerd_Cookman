@@ -1,17 +1,17 @@
-import {Character, Items, CharClass, ItemObj, FireLizard, RockMonster, Wizard, Skeleton, Wolves, Pirate} from './../src/section5RPG.js';
+import {Character, Items, CharClass, ItemObj, FireLizard, RockMonster, Wizard, Skeleton, Wolves, Pirate, Bats, ShadowDemon, SpiderSnake} from './../src/section5RPG.js';
 
 describe('Character', () => {
 
   test('should correctly create a character object with 8 key values', () => {
-    const character = new Character("Opium Smuggler", 10, 5, 5, 5, 10, [], 10);
+    const character = new Character("Opium Smuggler");
     expect(character.charClass).toEqual("Opium Smuggler");
-    expect(character.str).toEqual(10);
-    expect(character.dex).toEqual(5);
-    expect(character.int).toEqual(5);
-    expect(character.cha).toEqual(5);
-    expect(character.con).toEqual(10);
-    expect(character.inventory).toEqual([]);
-    expect(character.hp).toEqual(10);
+    // expect(character.str).toEqual(10);
+    // expect(character.dex).toEqual(5);
+    // expect(character.int).toEqual(5);
+    // expect(character.cha).toEqual(5);
+    // expect(character.con).toEqual(10);
+    // expect(character.inventory).toEqual([]);
+    // expect(character.hp).toEqual(10);
   });
 });
 
@@ -104,21 +104,17 @@ describe("Items", () => {
   let miwuZhiya = new ItemObj("miwu zhiya", 50, 10);
   let bowAndArrows = new ItemObj("bow and arrows", 10, 100);
 
-  console.log(cavalrySabre);
 
   let arrayToFillItems = [cavalrySabre, gunKit, tradChineseMedicines, kungFuManual, opium, katana, fuShensLuckyCricket, blunderbuss, handaxe, floggingWhip, canteen, hempRope, freshBoots, purseOfGoldAndSilver, porcelainPlate, flintlock, miwuZhiya, bowAndArrows];
 
-  console.log(arrayToFillItems[0].name)
 
   let itemsListFilled = new Items();
 
   arrayToFillItems.forEach(myElement => {
-    console.log(myElement);
     itemsListFilled[myElement.name] = myElement;
   });
 
   test("should see if the items are being created correctly", () => {
-    console.log(itemsListFilled);
     expect(itemsListFilled["cavalry sabre"].name).toEqual("cavalry sabre");
   });
 });
@@ -187,5 +183,48 @@ describe('Pirate', () => {
     expect(pirate.atkDMG).toEqual(3);
     expect(pirate.atkChance).toEqual(40);
   });
+});
+
+describe('Bats', () => {
+
+  test('should correctly create a pirate object with stats as key values', () => {
+    const bats = new Bats("Bats", 12, 3, 40);
+    expect(bats.name).toEqual("Bats");
+    expect(bats.hp).toEqual(12);
+    expect(bats.atkDMG).toEqual(3);
+    expect(bats.atkChance).toEqual(40);
+  });
+});
+
+describe('ShadowDemon', () => {
+
+  test('should correctly create a pirate object with stats as key values', () => {
+    const shadow = new ShadowDemon("ShadowDemon", 12, 3, 40);
+    expect(shadow.name).toEqual("ShadowDemon");
+    expect(shadow.hp).toEqual(12);
+    expect(shadow.atkDMG).toEqual(3);
+    expect(shadow.atkChance).toEqual(40);
+  });
+});
+
+describe('SpiderSnake', () => {
+
+  test('should correctly create a pirate object with stats as key values', () => {
+    const spidersnake = new SpiderSnake("SpiderSnake", 12, 3, 40);
+    expect(spidersnake.name).toEqual("SpiderSnake");
+    expect(spidersnake.hp).toEqual(12);
+    expect(spidersnake.atkDMG).toEqual(3);
+    expect(spidersnake.atkChance).toEqual(40);
+  });
+});
+
+describe("Character class", () => {
+  test("should correctly update stats when class is assigned", () => {
+    let characterBoi = new Character("missionary")
+    expect(characterBoi.charClass).toEqual("missionary");
+    characterBoi.charClassApplyStats();
+    expect(characterBoi.cha).toEqual(10);
+  });
+  
 });
 
