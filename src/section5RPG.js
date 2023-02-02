@@ -10,6 +10,7 @@ export class Character{
     this.hp = this.con * 3;
     this.lvl = 1;
   }
+
   charClassApplyStats() {
     if (this.charClass === "opium smuggler") {
       this.str = this.str + 5;
@@ -23,7 +24,13 @@ export class Character{
     }
   }
 
-
+  LvlUp(strengthAdd, dexterityAdd, intelligenceAdd, charismaAdd, constitutionAdd) {
+    this.str = this.str + strengthAdd;
+    this.dex = this.dex + dexterityAdd;
+    this.int = this.int + intelligenceAdd;
+    this.cha = this.cha + charismaAdd;
+    this.con = this.con + constitutionAdd;
+  }
 }
 
 export class Items{
@@ -152,6 +159,14 @@ export class SpiderSnake{
   }
 }
 
-export let LvlUp = function(str, dex, int, cha, con){}
+// export let LvlUp = function(strength, dexterity, intelegence, charisma, constitution){
+//     new Character("something", [])
+//     Character.str += strength;
+//     Character.dex += dexterity;
+//     Character.int += intelegence;
+//     Character.cha += charisma;
+//     Character.con += constitution;
+//   }
+
 
 //Hello world!

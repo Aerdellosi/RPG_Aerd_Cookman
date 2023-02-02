@@ -1,4 +1,4 @@
-import {Character, Items, CharClass, ItemObj, FireLizard, RockMonster, Wizard, Skeleton, Wolves, Pirate, Bats, ShadowDemon, SpiderSnake, LvlUp} from './../src/section5RPG.js';
+import {Character, Items, CharClass, ItemObj, FireLizard, RockMonster, Wizard, Skeleton, Wolves, Pirate, Bats, ShadowDemon, SpiderSnake} from './../src/section5RPG.js';
 
 describe('Character', () => {
 
@@ -230,15 +230,26 @@ describe("Character class", () => {
 });
 
 describe("LvlUp", () => {
-  
+  let garthVanLohen = new Character("spice trader", null);
+  garthVanLohen.charClassApplyStats();
+  console.log(garthVanLohen);
+  garthVanLohen.LvlUp(5,0,0,5,0);
+  console.log(garthVanLohen);
   test("should correctly update stats at level up point", () => {
-    LvlUp(5, 0, 0, 5, 0);
-    expect(str).toEqual(5);
-    expect(dex).toEqual(0);
-    expect(int).toEqual(0);
-    expect(cha).toEqual(5);
-    expect(con).toEqual(0);
+    expect(garthVanLohen.str).toEqual(10);
+    expect(garthVanLohen.dex).toEqual(10);
+    expect(garthVanLohen.int).toEqual(5);
+    expect(garthVanLohen.cha).toEqual(15);
+    expect(garthVanLohen.con).toEqual(5);
   });
 
+});
+
+describe("add dummy item list", () => {
+  let dummyList = ["blunderbuss", "katana", "gun kit"];
+  let donVanCookman = new Character("missionary", dummyList);
+  test("should give the array to char correctly", () => {
+    expect(donVanCookman.inventory).toEqual(dummyList);
+  });
 });
 
