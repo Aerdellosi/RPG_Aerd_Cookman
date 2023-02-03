@@ -1,17 +1,29 @@
 import 'bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './css/styles.css';
-import Character from './section5RPG.js';
+import {listOfFirstItemsArray} from './section5RPG.js';
 
-function handleCharacterForm(event) {
-  event.preventDefault();
-  let charClass = "charClass";
-  let str = 0;
-  let dex = 0;
-  let int = 0;
-  let cha = 0;
-  let con = 0;
-  let inventory = [];
-  let hp = 0;
-}
+export let makeFirstItems = function(array){
+  console.log("is button working");
+  const selectItemsButton = document.getElementById("first-items-select");
+  let form = document.createElement("form");
+  selectItemsButton.after(form);
+  array.forEach(element => {
+    let checkbox = document.createElement("input");
+    let label = document.createElement("label");
+    label.innerText = element.name + ": " + element.description;
+    label.setAttribute("for", "1" + element.name);
+    checkbox.setAttribute("value", element.name);
+    checkbox.setAttribute("type", "checkbox");
+    checkbox.setAttribute("name", "starting-tiems");
+    checkbox.setAttribute("id", "1" + element.name);
+  });
+};
 
+window.addEventListener("load", function() {
+  const selectItemsButton = document.getElementById("first-items-select");
+  selectItemsButton.onclick = (event) => {
+    event.preventDefault()
+    makeFirstItems(listOfFirstItemsArray());
+  }
+} );
